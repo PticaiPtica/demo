@@ -3,7 +3,7 @@ package ru.academy.homework.demo.Home_work.OnetoOne.One;
 import jakarta.persistence.*;
 
 @Entity
-public class Settings {
+public class Setting {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,4 +13,7 @@ public class Settings {
 
     @Column(name = "language")
     private String language;
+
+    @OneToOne(mappedBy = "setting")
+    private Account account;
 }
