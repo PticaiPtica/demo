@@ -1,0 +1,27 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.task-one div {
+    padding: 20px;
+    background: greenyellow;
+    text-align: center;
+    font-size: 20px;
+}
+
+.task-one {
+    width: 70vw;
+    height: 70vh;
+    border: 1px solid;
+    margin: 50px auto;
+
+    display: flex;
+
+    grid-auto-rows: 80px;
+    gap: 20px;
+}
+
+
+
