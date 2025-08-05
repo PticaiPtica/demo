@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .btn {
+            width: 50px;
+            height: 30px;
+            border: 3px solid black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5px;
+
+            text-decoration: none;
+        }
+
+        .clear {
+            background-color: red;
+        }
+
+        .adds {
+            background-color: darkgreen;
+        }
+
+        .container, .btns {
+            display: flex;
+        }
+
+        .delete {
+            background: red;
+        }
+
+        .add {
+            background: orange;
+        }
+
+        .edit {
+            background: yellow;
+        }
+
+        .custom-td {
+            width: 130px;
+        }
+    </style>
+</head>
+<body>
+<h1>Persons list</h1>
+
+<div class="container">
+    <a class="btn clear" href="/person/clear">Clear</a>
+    <a class="btn add" href="/person/create">Add</a>
+    <a class="btn adds" href="/person/addPeople">Adds</a>
+</div>
+
+<table th:if="${!people.isEmpty()}" border="1">
+    <tr>
+        <th>Id</th>
+        <th>Age</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Type</th>
+        <th>Email</th>
+        <th>Button</th>
+    </tr>
+
+
+    <tr th:each="person : ${people}">
+        <td th:text="${person.getId()}"></td>
+        <td th:text="${person.getAge()}"></td>
+        <td th:text="${person.getName()}"></td>
+        <td class="custom-td" th:text="${person.getSurname()}"></td>
+        <td class="custom-td" th:text="${person.getEmployee()}"></td>
+        <td class="custom-td" th:text="${person.getEmail()}"></td>
+        <td class="btns">
+            <a th:href="@{/person/delete/{id}(id=${person.getId()})}" class="btn delete">Delete</a>
+            <a href="#" class="btn edit">Edit</a>
+        </td>
+    </tr>
+</table>
+
+<p th:if="${people.isEmpty()}">People are empty</p>
+</body>
+</html>
